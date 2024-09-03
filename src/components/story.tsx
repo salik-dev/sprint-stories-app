@@ -11,7 +11,7 @@ import {
     FormControlLabel,
 } from '@mui/material';
 import { Employee } from './mui-table';
-import { MockData } from '../makeData';
+import { MockData } from '../mock-data';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
@@ -23,23 +23,28 @@ const StoryCreationForm: React.FC = () => {
 
     console.log('row value', row);
 
-    
+
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const startDate = row && row.startDate.split("/")[2] + "-" + row.startDate.split("/")[0] + "-" + row.startDate.split("/")[1];
+    const targetDate = row && row.targetDate.split("/")[2] + "-" + row.targetDate.split("/")[0] + "-" + row.targetDate.split("/")[1];
+
+    console.log({ startDate });
+
     const [dynamicFields, setDynamicFields] = useState({
-        dueDate: '',
-        estimatedTime: '',
-        progress: '',
-        storyId: '',
-        attachment: '',
-        status: '',
-        priority: '',
-        type: '',
-        component: '',
-        sprint: '',
-        labels: '',
-        relatedTickets: '',
+        dueDate: row ? startDate : '',
+        estimatedTime: row ? targetDate : '',
+        progress: row ? row.progress : '',
+        storyId: row ? row.storyId : '',
+        attachment: row ? row.attachment : '',
+        status: row ? row.status : '',
+        priority: row ? row.priority : '',
+        type: row ? row.type : '',
+        component: row ? row.component : '',
+        sprint: row ? row.sprint : '',
+        labels: row ? row.labels : '',
+        relatedTickets: row ? row.relatedTickets : '',
     });
 
     const handleFieldToggle = (field: string) => {
@@ -77,6 +82,7 @@ const StoryCreationForm: React.FC = () => {
 
         const newStory: Employee = {
             storyName: title,
+            description: description,
             progress: (Math.floor(Math.random() * 100)).toString(), // Random progress between 0-100
             // storyId: Math.floor(Math.random() * 100000), // Random storyId
             storyId: dynamicFields.storyId,
@@ -114,7 +120,7 @@ const StoryCreationForm: React.FC = () => {
                 >
                     <TextField
                         label="Title"
-                        value={title}
+                        value={row ? row.storyName : title}
                         onChange={(e) => setTitle(e.target.value)}
                         variant="outlined"
                         fullWidth
@@ -123,7 +129,7 @@ const StoryCreationForm: React.FC = () => {
                     />
                     <TextField
                         label="Description"
-                        value={description}
+                        value={row ? row.description : description}
                         onChange={(e) => setDescription(e.target.value)}
                         variant="outlined"
                         fullWidth
@@ -152,7 +158,6 @@ const StoryCreationForm: React.FC = () => {
                         renderValue={(selected) => selected.join(', ')}
                         fullWidth
                         size='small'
-
                     >
                         {Object.keys(dynamicFields).map((field) => (
                             <MenuItem key={field} value={field} sx={{ height: "30px" }}>
@@ -171,7 +176,7 @@ const StoryCreationForm: React.FC = () => {
 
                     {/* Dynamic Fields */}
 
-                    {selectedFields.includes('dueDate') && (
+                    {(selectedFields.includes('dueDate') || row && row.startDate) && (
                         <TextField
                             type="date"
                             fullWidth
@@ -186,7 +191,7 @@ const StoryCreationForm: React.FC = () => {
                             }
                         />
                     )}
-                    {selectedFields.includes('estimatedTime') && (
+                    {(selectedFields.includes('estimatedTime') || row && row.targetDate) && (
                         <TextField
                             type="date"
                             fullWidth
@@ -201,27 +206,29 @@ const StoryCreationForm: React.FC = () => {
                             }
                         />
                     )}
-                    {selectedFields.includes('attachment') && (
+                    {(selectedFields.includes('attachment') || row && row.attachment) && (
                         <TextField
                             type="file"
                             fullWidth
                             size='small'
                             margin="normal"
+                            // value={"dynamicFields.attachment"}
                             onChange={(e) =>
                                 setDynamicFields({
                                     ...dynamicFields,
-                                    attachment: e.target.value,
+                                    attachment: row.attachment || e.target.value,
                                 })
                             }
                         />
                     )}
 
-                    {selectedFields.includes('status') && (
+                    {(selectedFields.includes('status') || row && row.status) && (
                         <FormControl fullWidth margin="normal">
                             <InputLabel>Status</InputLabel>
                             <Select
-                                value={dynamicFields.status}
                                 size='small'
+                                defaultValue={row.status}
+                                // value={'dynamicFields.status'}
                                 onChange={(e) =>
                                     setDynamicFields({
                                         ...dynamicFields,
@@ -240,7 +247,7 @@ const StoryCreationForm: React.FC = () => {
                         </FormControl>
                     )}
 
-                    {selectedFields.includes('priority') && (
+                    {(selectedFields.includes('priority') || row && row.priority) && (
                         <FormControl fullWidth margin="normal">
                             <InputLabel>Priority</InputLabel>
                             <Select
@@ -264,7 +271,7 @@ const StoryCreationForm: React.FC = () => {
                         </FormControl>
                     )}
 
-                    {selectedFields.includes('type') && (
+                    {(selectedFields.includes('type') || row && row.type) && (
                         <FormControl fullWidth margin="normal">
                             <InputLabel>Type</InputLabel>
                             <Select
@@ -288,7 +295,7 @@ const StoryCreationForm: React.FC = () => {
                         </FormControl>
                     )}
 
-                    {selectedFields.includes('component') && (
+                    {(selectedFields.includes('component') || row && row.component) && (
                         <TextField
                             label="Component"
                             value={dynamicFields.component}
@@ -305,7 +312,7 @@ const StoryCreationForm: React.FC = () => {
                         />
                     )}
 
-                    {selectedFields.includes('sprint') && (
+                    {(selectedFields.includes('sprint') || row && row.sprint) && (
                         <TextField
                             label="Sprint"
                             value={dynamicFields.sprint}
@@ -322,7 +329,7 @@ const StoryCreationForm: React.FC = () => {
                         />
                     )}
 
-                    {selectedFields.includes('labels') && (
+                    {(selectedFields.includes('labels') || row && row.labels) && (
                         <TextField
                             label="Labels"
                             value={dynamicFields.labels}
@@ -339,7 +346,7 @@ const StoryCreationForm: React.FC = () => {
                         />
                     )}
 
-                    {selectedFields.includes('relatedTickets') && (
+                    {(selectedFields.includes('relatedTickets') || row && row.relatedTickets) && (
                         <TextField
                             label="Related Tickets"
                             value={dynamicFields.relatedTickets}

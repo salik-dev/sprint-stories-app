@@ -16,10 +16,11 @@ import {
   lighten,
 } from '@mui/material';
 
-import { MockData as data } from '../makeData';
+import { MockData as data } from '../mock-data';
 
 export type Employee = {
   storyName: string;
+  description: string;
   progress: string;
   storyId: string;
   startDate: string;
