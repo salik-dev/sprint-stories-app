@@ -311,7 +311,7 @@ const Example = () => {
     },
   });
 
-  return <MaterialReactTable table={table} />;
+  return <MaterialReactTable table={table}/>;
 };
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';

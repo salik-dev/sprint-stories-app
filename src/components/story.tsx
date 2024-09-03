@@ -378,9 +378,11 @@ const StoryCreationForm: React.FC = () => {
                 </Box>
             </Box>
             <div >
-                <InputLabel sx={{ fontWeight: 'bold', color: '#544646' }}>Task Creation (Optional)</InputLabel>
-                <InputLabel sx={{ fontSize: '15px', marginTop: 1 }}>
-                    <Checkbox sx={{ padding: 0, color: 'gray' }} />
+                <InputLabel sx={{ fontWeight: 'bold', color: '#544646', display: 'flex', gap: '6px' }}>
+                    <span style={{ color: 'white', padding: '0px 6px 0px 6px', backgroundColor: '#1B5E20' }}>+</span>
+                    Task Creation (Optional)</InputLabel>
+                <InputLabel sx={{ fontSize: '15px', marginTop: 1, display: 'flex', gap: '6px' }}>
+                    <Checkbox sx={{ padding: 0, color: 'gray' }} color="success" />
                     [ Insert Task ]
                 </InputLabel>
             </div>
@@ -389,7 +391,7 @@ const StoryCreationForm: React.FC = () => {
 
             {/* Action Buttons */}
             {
-                !row && <Box id="action-btn" display={'flex'} gap={1} sx={{marginTop: 4}}>
+                !row && <Box id="action-btn" display={'flex'} gap={1} sx={{ marginTop: 4 }}>
                     <Button variant="outlined" color="primary" onClick={handleCancel} sx={{ color: 'gray', backgroundColor: '#E9EAEC', textTransform: 'capitalize', px: '46px', borderColor: '#E9EAEC' }}>
                         Cancel
                     </Button>
