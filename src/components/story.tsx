@@ -13,17 +13,13 @@ import {
 import { Employee } from './mui-table';
 import { MockData } from '../mock-data';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import EditNoteIcon from '@mui/icons-material/EditNote';
 
 const StoryCreationForm: React.FC = () => {
     const [selectedFields, setSelectedFields] = useState<string[]>([]);
     const navigate = useNavigate();
     const location = useLocation();
     const { row } = location.state || {};
-
-    console.log('row value', row);
-
-
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -106,9 +102,26 @@ const StoryCreationForm: React.FC = () => {
 
     return (
         <div style={{ backgroundColor: 'white', margin: "40px", border: "1px solid #E3E7EB", padding: '20px', borderRadius: '5px' }}>
-            <InputLabel sx={{ fontWeight: 'bold', color: '#544646' }}>Add Ticket Details</InputLabel>
-            <InputLabel sx={{ fontSize: '13px', }}>Fill out following detail to create a new story!</InputLabel>
-            <InputLabel sx={{ marginTop: '6px', marginBottom: '20px', fontWeight: 'bold', color: '#544646' }}>Basic Details</InputLabel>
+            <span style={{ display: 'flex', justifyContent: 'right', marginBottom: '10px' }}>
+                <EditNoteIcon sx={{ color: "gray", display: 'flex', border: "1px solid #E3E7EB", padding: '8px', borderRadius: "100px" }} />
+            </span>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div>
+                    <InputLabel sx={{ fontWeight: 'bold', color: '#544646' }}>Add Ticket Details</InputLabel>
+                    <InputLabel sx={{ fontSize: '13px', }}>Fill out following detail to create a new story!</InputLabel>
+                    <InputLabel sx={{ marginTop: '6px', marginBottom: '20px', fontWeight: 'bold', color: '#544646' }}>Basic Details</InputLabel>
+                </div>
+                <div style={{ marginTop: '3px' }}>
+                    <Box id="action-btn" display={'flex'} gap={1}>
+                        <Button variant="contained" color="success" onClick={() => { }} sx={{ textTransform: 'capitalize', px: '32px' }}>
+                            Ticket Metadata
+                        </Button>
+                        <Button variant="outlined" color="primary" onClick={() => { }} sx={{ color: 'gray', backgroundColor: '#E9EAEC', textTransform: 'capitalize', px: '46px', borderColor: '#E9EAEC' }}>
+                            History
+                        </Button>
+                    </Box>
+                </div>
+            </div>
             <Box display="flex" flexDirection="row" gap={2}>
                 {/* Title and Description Fields */}
                 <Box
@@ -227,7 +240,7 @@ const StoryCreationForm: React.FC = () => {
                             <InputLabel>Status</InputLabel>
                             <Select
                                 size='small'
-                                defaultValue={row.status}
+                                defaultValue={dynamicFields.status}
                                 // value={'dynamicFields.status'}
                                 onChange={(e) =>
                                     setDynamicFields({
