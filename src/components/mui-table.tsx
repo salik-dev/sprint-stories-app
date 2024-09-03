@@ -35,7 +35,7 @@ export type Employee = {
   tickets: string;
 };
 
-const Example = () => {
+const MReactTable = () => {
   const [selectedRow, setSelectedRow] = useState<Employee | null>(null);
   const navigate = useNavigate();
 
@@ -319,7 +319,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const MuiReactTable = () => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <Example />
+    <MReactTable />
   </LocalizationProvider>
 );
 

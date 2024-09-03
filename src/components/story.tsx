@@ -387,7 +387,9 @@ const StoryCreationForm: React.FC = () => {
                 </InputLabel>
             </div>
             {/* User Comments component */}
-            {row && <UserComments username='hello-world' commentText='helow world' date={"24 Oct 2010, 4:30 PM"} />}
+            {row && <>
+                <UserComments username='hello-world' commentText='helow world' date={"24 Oct 2010, 4:30 PM"} />
+            </>}
 
             {/* Action Buttons */}
             {

@@ -31,7 +31,8 @@ const UserComments: React.FC<CommentProps> = ({ username, commentText, date }) =
                     New Comment
                 </Button>
             </div>
-            <Box sx={{ border: '1px solid #ddd', borderRadius: '5px', p: 2, mt: 2, mb: 4, backgroundColor: '#E3E7EB' }}>
+            {
+            [1, 2].map((item, key) => <Box sx={{ border: '1px solid #ddd', borderRadius: '5px', p: 2, mt: 2, mb: 4, backgroundColor: '#E3E7EB' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
                     <Typography variant="h6">{username}</Typography>
                     <InputLabel sx={{ fontSize: '15px' }}>{date}</InputLabel>
@@ -69,7 +70,7 @@ const UserComments: React.FC<CommentProps> = ({ username, commentText, date }) =
                     </Button>
                 </Box>
             )} */}
-            </Box>
+            </Box>)}
         </>
     );
 };
