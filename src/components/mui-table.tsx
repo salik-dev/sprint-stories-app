@@ -184,7 +184,7 @@ const Example = () => {
   const handleOpenStory = (row: Employee) => {
     setSelectedRow(row); // Set selected row data
     console.log('row', row)
-    // navigate("/create-story", { state: { row } }); // Pass data using state
+    navigate("/create-story", { state: { row } }); // Pass data using state
   };
 
   const table = useMaterialReactTable({
@@ -238,7 +238,7 @@ const Example = () => {
       <MenuItem
         key={3}
         onClick={() => {
-          // handleOpenStory(row.original); // Pass row data to the function
+          handleOpenStory(row.original); // Pass row data to the function
           closeMenu();
         }}
         sx={{ px: 6 }}

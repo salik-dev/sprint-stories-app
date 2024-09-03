@@ -16,16 +16,22 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const StoryCreationForm: React.FC = () => {
+    const [selectedFields, setSelectedFields] = useState<string[]>([]);
+    const navigate = useNavigate();
     const location = useLocation();
-    const {row} = location.state || {};
-    
+    const { row } = location.state || {};
+
     console.log('row value', row);
+
+    
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dynamicFields, setDynamicFields] = useState({
         dueDate: '',
         estimatedTime: '',
+        progress: '',
+        storyId: '',
         attachment: '',
         status: '',
         priority: '',
@@ -35,8 +41,6 @@ const StoryCreationForm: React.FC = () => {
         labels: '',
         relatedTickets: '',
     });
-    const [selectedFields, setSelectedFields] = useState<string[]>([]);
-    const navigate = useNavigate();
 
     const handleFieldToggle = (field: string) => {
         setSelectedFields((prevSelected) =>
@@ -52,6 +56,8 @@ const StoryCreationForm: React.FC = () => {
         setDynamicFields({
             dueDate: '',
             estimatedTime: '',
+            progress: '',
+            storyId: '',
             attachment: '',
             status: '',
             priority: '',
@@ -72,7 +78,8 @@ const StoryCreationForm: React.FC = () => {
         const newStory: Employee = {
             storyName: title,
             progress: (Math.floor(Math.random() * 100)).toString(), // Random progress between 0-100
-            storyId: Math.floor(Math.random() * 100000), // Random storyId
+            // storyId: Math.floor(Math.random() * 100000), // Random storyId
+            storyId: dynamicFields.storyId,
             startDate: dynamicFields.dueDate,
             targetDate: dynamicFields.estimatedTime,
             attachment: dynamicFields.attachment,
