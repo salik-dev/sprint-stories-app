@@ -14,6 +14,7 @@ import { Employee } from './mui-table';
 import { MockData } from '../mock-data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import UserComments from './user-comment';
 
 const StoryCreationForm: React.FC = () => {
     const [selectedFields, setSelectedFields] = useState<string[]>([]);
@@ -101,14 +102,14 @@ const StoryCreationForm: React.FC = () => {
     };
 
     return (
-        <div style={{ backgroundColor: 'white', margin: "40px", border: "1px solid #E3E7EB", padding: '20px', borderRadius: '5px' }}>
+        <div style={{ backgroundColor: 'white', margin: "40px", border: "1px solid #E3E7EB", padding: '30px', borderRadius: '5px' }}>
             <span style={{ display: 'flex', justifyContent: 'right', marginBottom: '10px' }}>
                 <EditNoteIcon sx={{ color: "gray", display: 'flex', border: "1px solid #E3E7EB", padding: '8px', borderRadius: "100px" }} />
             </span>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>
                     <InputLabel sx={{ fontWeight: 'bold', color: '#544646' }}>Add Ticket Details</InputLabel>
-                    <InputLabel sx={{ fontSize: '13px', }}>Fill out following detail to create a new story!</InputLabel>
+                    <InputLabel sx={{ fontSize: '15px', }}>Fill out following detail to create a new story!</InputLabel>
                     <InputLabel sx={{ marginTop: '6px', marginBottom: '20px', fontWeight: 'bold', color: '#544646' }}>Basic Details</InputLabel>
                 </div>
                 <div style={{ marginTop: '3px' }}>
@@ -241,7 +242,6 @@ const StoryCreationForm: React.FC = () => {
                             <Select
                                 size='small'
                                 defaultValue={dynamicFields.status}
-                                // value={'dynamicFields.status'}
                                 onChange={(e) =>
                                     setDynamicFields({
                                         ...dynamicFields,
@@ -377,15 +377,27 @@ const StoryCreationForm: React.FC = () => {
                     )}
                 </Box>
             </Box>
+            <div >
+                <InputLabel sx={{ fontWeight: 'bold', color: '#544646' }}>Task Creation (Optional)</InputLabel>
+                <InputLabel sx={{ fontSize: '15px', marginTop: 1 }}>
+                    <Checkbox sx={{ padding: 0, color: 'gray' }} />
+                    [ Insert Task ]
+                </InputLabel>
+            </div>
+            {/* User Comments component */}
+            {row && <UserComments username='hello-world' commentText='helow world' date={"24 Oct 2010, 4:30 PM"} />}
+
             {/* Action Buttons */}
-            <Box id="action-btn" display={'flex'} gap={1}>
-                <Button variant="outlined" color="primary" onClick={handleCancel} sx={{ color: 'gray', backgroundColor: '#E9EAEC', textTransform: 'capitalize', px: '46px', borderColor: '#E9EAEC' }}>
-                    Cancel
-                </Button>
-                <Button variant="contained" color="success" onClick={handleSubmit} sx={{ textTransform: 'capitalize', px: '32px' }}>
-                    Create Story
-                </Button>
-            </Box>
+            {
+                !row && <Box id="action-btn" display={'flex'} gap={1} sx={{marginTop: 4}}>
+                    <Button variant="outlined" color="primary" onClick={handleCancel} sx={{ color: 'gray', backgroundColor: '#E9EAEC', textTransform: 'capitalize', px: '46px', borderColor: '#E9EAEC' }}>
+                        Cancel
+                    </Button>
+                    <Button variant="contained" color="success" onClick={handleSubmit} sx={{ textTransform: 'capitalize', px: '32px' }}>
+                        Create Story
+                    </Button>
+                </Box>
+            }
         </div>
     );
 };
