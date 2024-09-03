@@ -15,7 +15,7 @@ import {
   Typography,
   lighten,
 } from '@mui/material';
-import { MockData as data } from './mock-data';
+import { MockData as data } from './@db/mock-data';
 
 export type Employee = {
   storyName: string;

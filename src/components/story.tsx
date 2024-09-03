@@ -11,7 +11,7 @@ import {
     FormControlLabel,
 } from '@mui/material';
 import { Employee } from './mui-table';
-import { MockData } from '../mock-data';
+import { MockData } from '../@db/mock-data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import UserComments from './user-comment';
