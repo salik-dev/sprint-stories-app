@@ -8,7 +8,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "start": "vite",
-    "salikpush": "git add . && git commit -m bahadur-ushed && git push"
+    "salikpush": "git add . && git commit -m ok && git push"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
