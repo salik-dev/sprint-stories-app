@@ -282,7 +282,7 @@ const MReactTable = () => {
         >
           <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             <MRT_GlobalFilterTextField table={table} placeholder='Search Stories Here' />
-            <MRT_ToggleFiltersButton table={table} title="Show Filters" />
+            {/* <MRT_ToggleFiltersButton table={table} title="Show Filters" /> */}
           </Box>
           <Box>
             <Box sx={{ display: 'flex', gap: '0.5rem' }}>

@@ -159,7 +159,6 @@ const StoryCreationForm: React.FC = () => {
                     <InputLabel id="add-ticket-details-label">Add Ticket Details</InputLabel>
                     <Select
                         labelId="add-ticket-details-label"
-                        placeholder='ksldfkjasldfkj'
                         multiple
                         value={selectedFields}
                         onChange={(e) => {
@@ -182,7 +181,7 @@ const StoryCreationForm: React.FC = () => {
                                             onChange={() => handleFieldToggle(field)}
                                         />
                                     }
-                                    label={field.replace(/([A-Z])/g, ' $1')}
+                                    label={field.replace(/([A-Z])/g, '$1')}
                                 />
                             </MenuItem>
                         ))}
@@ -380,16 +379,17 @@ const StoryCreationForm: React.FC = () => {
             <div >
                 <InputLabel sx={{ fontWeight: 'bold', color: '#544646', display: 'flex', gap: '6px' }}>
                     <span style={{ color: 'white', padding: '0px 6px 0px 6px', backgroundColor: '#1B5E20' }}>+</span>
-                    Task Creation (Optional)</InputLabel>
+                    Task Creation (Optional)
+                </InputLabel>
                 <InputLabel sx={{ fontSize: '15px', marginTop: 1, display: 'flex', gap: '6px' }}>
                     <Checkbox sx={{ padding: 0, color: 'gray' }} color="success" />
                     [ Insert Task ]
                 </InputLabel>
             </div>
+
             {/* User Comments component */}
-            {row && <>
-                <UserComments username='hello-world' commentText='helow world' date={"24 Oct 2010, 4:30 PM"} />
-            </>}
+            {row &&
+                <UserComments username='hello-world' commentText='helow world' date={"24 Oct 2010, 4:30 PM"} />}
 
             {/* Action Buttons */}
             {
