@@ -24,14 +24,14 @@ const StoryCreationForm: React.FC = () => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const startDate = row && row.startDate.split("/")[2] + "-" + row.startDate.split("/")[0] + "-" + row.startDate.split("/")[1];
-    const targetDate = row && row.targetDate.split("/")[2] + "-" + row.targetDate.split("/")[0] + "-" + row.targetDate.split("/")[1];
+    // const startDate = row && row.startDate.split("/")[2] + "-" + row.startDate.split("/")[0] + "-" + row.startDate.split("/")[1];
+    // const targetDate = row && row.targetDate.split("/")[2] + "-" + row.targetDate.split("/")[0] + "-" + row.targetDate.split("/")[1];
 
-    console.log({ startDate });
+    console.log(row);
 
     const [dynamicFields, setDynamicFields] = useState({
-        dueDate: row ? startDate : '',
-        estimatedTime: row ? targetDate : '',
+        dueDate: row ? row.startDate : '',
+        estimatedTime: row ? row.targetDate : '',
         progress: row ? row.progress : '',
         storyId: row ? row.storyId : '',
         attachment: row ? row.attachment : '',
