@@ -32,30 +32,30 @@ const UserComments: React.FC<CommentProps> = ({ username, commentText, date }) =
                 </Button>
             </div>
             {
-            [1, 2].map((item, key) => <Box sx={{ border: '1px solid #ddd', borderRadius: '5px', p: 2, mt: 2, mb: 4, backgroundColor: '#E3E7EB' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
-                    <Typography variant="h6">{username}</Typography>
-                    <InputLabel sx={{ fontSize: '15px' }}>{date}</InputLabel>
-                </div>
-                <InputLabel sx={{ fontSize: '15px' }}>{commentText}</InputLabel>
+                [1, 2].map((item, key) => <Box sx={{ border: '1px solid #ddd', borderRadius: '5px', p: 2, mt: 2, mb: 4, backgroundColor: '#E3E7EB' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
+                        <Typography variant="h6">{username}</Typography>
+                        <InputLabel sx={{ fontSize: '15px' }}>{date}</InputLabel>
+                    </div>
+                    <InputLabel sx={{ fontSize: '15px' }}>{commentText}</InputLabel>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                    <IconButton onClick={handleLike} size="small">
-                        <ThumbUpIcon fontSize="small" />
-                    </IconButton>
-                    <Typography variant="body2" sx={{ mx: 1 }}>{likes}</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                        <IconButton onClick={handleLike} size="small">
+                            <ThumbUpIcon fontSize="small" />
+                        </IconButton>
+                        <Typography variant="body2" sx={{ mx: 1 }}>{likes}</Typography>
 
-                    <IconButton onClick={handleDislike} size="small">
-                        <ThumbDownIcon fontSize="small" />
-                    </IconButton>
-                    <Typography variant="body2" sx={{ mx: 1 }}>{dislikes}</Typography>
+                        <IconButton onClick={handleDislike} size="small">
+                            <ThumbDownIcon fontSize="small" />
+                        </IconButton>
+                        <Typography variant="body2" sx={{ mx: 1 }}>{dislikes}</Typography>
 
-                    {/* <Button variant="text" onClick={handleReply} size="small">
+                        {/* <Button variant="text" onClick={handleReply} size="small">
                     {showReply ? 'Cancel' : 'Reply'}
                 </Button> */}
-                </Box>
+                    </Box>
 
-                {/* {showReply && (
+                    {/* {showReply && (
                 <Box sx={{ mt: 2 }}>
                     <TextField
                         label="Write a reply..."
@@ -70,7 +70,7 @@ const UserComments: React.FC<CommentProps> = ({ username, commentText, date }) =
                     </Button>
                 </Box>
             )} */}
-            </Box>)}
+                </Box>)}
         </>
     );
 };
